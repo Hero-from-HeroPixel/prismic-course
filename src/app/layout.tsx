@@ -1,7 +1,9 @@
 import './globals.css';
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import { Nunito, Nunito_Sans } from 'next/font/google';
 import clsx from 'clsx';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { createClient } from '@/prismicio';
 
 const nunito = Nunito({
@@ -20,13 +22,13 @@ const nunito_sans = Nunito_Sans({
 export async function generateMetadata(): Promise<Metadata> {
 	const client = createClient();
 
-	const { data } = await client.getSingle('settings');
+	const { data: settings } = await client.getSingle('settings');
 	return {
-		title: data.site_title || 'Prismic Course',
+		title: settings.site_title || 'Prismic Course',
 		description:
-			data.meta_description || 'Introduction to Prismic and headless page builders',
+			settings.meta_description || 'Introduction to Prismic and headless page builders',
 		openGraph: {
-			images: [data.og_image.url || ''],
+			images: [settings.og_image.url || ''],
 		},
 	};
 }
@@ -35,9 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className={clsx(nunito.variable, nunito_sans.variable)}>
-				<header>Header</header>
+				<Header />
 				{children}
-				<footer>Footer</footer>
+				<Footer />
 			</body>
 		</html>
 	);
