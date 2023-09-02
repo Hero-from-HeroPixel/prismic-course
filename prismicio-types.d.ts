@@ -7,7 +7,9 @@ type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 type HomePageDocumentDataSlicesSlice =
   | HeroSlice
   | TestimonialsSlice
-  | FeaturesSlice;
+  | FeaturesSlice
+  | TextWithImageSlice
+  | CallToActionSlice;
 
 /**
  * Content for Home Page documents
