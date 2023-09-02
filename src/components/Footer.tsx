@@ -10,7 +10,7 @@ export default async function Footer({}: Props) {
 
 	return (
 		<footer className="py-4 md:py-6 lg:py-8 w-full bg-white font-body">
-			<div className="w-10/12 mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+			<div className="w-10/12 mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
 				<Link href={'/'}>
 					<Logo />
 				</Link>
@@ -18,7 +18,7 @@ export default async function Footer({}: Props) {
 					©{new Date().getFullYear()} {settings.site_title}
 				</p>
 
-				<ul className="flex gap-2">
+				<ul className="flex gap-8">
 					{settings.navigation.map(({ label, url }) => (
 						<li key={label}>
 							<PrismicNextLink field={url}>{label}</PrismicNextLink>
