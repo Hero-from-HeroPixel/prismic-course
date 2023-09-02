@@ -6,18 +6,18 @@
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "config": {
-          "label": "UID"
-        },
-        "type": "UID"
-      },
       "name": {
         "type": "Text",
         "config": {
           "label": "Name",
           "placeholder": ""
         }
+      },
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
       },
       "job_title": {
         "type": "Text",
