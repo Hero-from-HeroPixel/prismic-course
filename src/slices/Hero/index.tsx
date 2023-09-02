@@ -12,7 +12,7 @@ const components: JSXMapSerializer = {
 		</Heading>
 	),
 	paragraph: ({ children }) => (
-		<p className="font-body text-2xl leading-10 text-center font-normal text-slate-600 mb-4 md:mb-8 max-w-md">
+		<p className="font-body text-2xl leading-10 font-normal text-slate-600 mb-4 md:mb-8 max-w-md">
 			{children}
 		</p>
 	),
@@ -27,17 +27,46 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
 	return (
-		<Bounded>
-			<PrismicRichText field={slice.primary.heading} components={components} />
-			<PrismicRichText field={slice.primary.body} components={components} />
-			<Button className="mb-8 md:mb-10" field={slice.primary.button_link}>
-				{slice.primary.button_text}
-			</Button>
-			<PrismicNextImage
-				field={slice.primary.hero_image}
-				className="drop-shadow-xl max-w-4xl w-full"
-			/>
-		</Bounded>
+		<>
+			{slice.variation === 'default' && (
+				<Bounded
+					data-slice-type={slice.slice_type}
+					data-slice-variation={slice.variation}
+					className="text-center">
+					<PrismicRichText field={slice.primary.heading} components={components} />
+					<PrismicRichText field={slice.primary.body} components={components} />
+					<Button className="mb-8 md:mb-10" field={slice.primary.button_link}>
+						{slice.primary.button_text}
+					</Button>
+					<PrismicNextImage
+						field={slice.primary.hero_image}
+						className="drop-shadow-xl rounded-xl max-w-4xl w-full"
+					/>
+				</Bounded>
+			)}
+			{slice.variation === 'horizontal' && (
+				<Bounded
+					className="grid grid-cols-1 md:grid-cols-2 place-items-center"
+					data-slice-type={slice.slice_type}
+					data-slice-variation={slice.variation}>
+					<div className="flex flex-col gap-8 justify-between items-start">
+						<PrismicRichText
+							field={slice.primary.heading}
+							components={components}
+						/>
+						<PrismicRichText field={slice.primary.body} components={components} />
+						<Button className="mb-8 md:mb-10" field={slice.primary.button_link}>
+							{slice.primary.button_text}
+						</Button>
+					</div>
+
+					<PrismicNextImage
+						field={slice.primary.hero_image}
+						className="rounded-xl max-w-4xl w-full"
+					/>
+				</Bounded>
+			)}
+		</>
 	);
 };
 
