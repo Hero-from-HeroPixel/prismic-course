@@ -40,7 +40,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 					</Button>
 					<PrismicNextImage
 						field={slice.primary.hero_image}
-						className="drop-shadow-xl rounded-xl max-w-4xl w-full"
+						className="drop-shadow-xl rounded-2xl max-w-4xl w-full"
 					/>
 				</Bounded>
 			)}
@@ -49,7 +49,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 					className="grid grid-cols-1 md:grid-cols-2 place-items-center"
 					data-slice-type={slice.slice_type}
 					data-slice-variation={slice.variation}>
-					<div className="flex flex-col gap-8 justify-between items-start">
+					<div className="flex flex-col gap-6 justify-between items-start">
 						<PrismicRichText
 							field={slice.primary.heading}
 							components={components}
@@ -62,7 +62,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
 
 					<PrismicNextImage
 						field={slice.primary.hero_image}
-						className="rounded-xl max-w-4xl w-full"
+						className="rounded-2xl max-w-4xl w-full"
 					/>
 				</Bounded>
 			)}
