@@ -7,6 +7,8 @@ import { components } from '@/slices';
 
 type Params = { uid: string };
 
+export const revalidate = 60;
+
 export default async function Page({ params }: { params: Params }) {
 	const client = createClient();
 	const page = await client.getByUID('page', params.uid).catch(() => notFound());

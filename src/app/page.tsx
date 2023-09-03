@@ -4,7 +4,7 @@ import { SliceZone } from '@prismicio/react';
 import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 
-export const revalidate = 5;
+export const revalidate = 60;
 
 export default async function Page() {
 	const client = createClient();
